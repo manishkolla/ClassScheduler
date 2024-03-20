@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Schedule</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/schedulestyle.css')}}">
+</head>
+<body>
+
+<section id="schedule">
+    <h2>Generated Schedule</h2>
+    <p>Here are your selected classes:</p>
+    <ul>
+        {% for class_name in selected_classes %}
+            <li>{{ class_name }}</li>
+        {% endfor %}
+    </ul>
+</section>
+</body>
+</html>
