@@ -4,7 +4,7 @@ from firebase_admin import storage
 import pyrebase
 import  creds
 
-#cred = credentials.Certificate(r"C:\Users\mkolla1\OneDrive - Georgia State University\Desktop\Spring 2024\DBMS\Project\ClassScheduler\creds.json")
+
 firebase=pyrebase.initialize_app(creds.firebaseConfig)
 auth=firebase.auth()
 
