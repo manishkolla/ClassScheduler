@@ -59,25 +59,23 @@ CREATE TABLE Spring2024 (
 
 
 
-use DBSProj;
+
 --This is for sample data:
--- Insert sample data into Students table
--- Insert sample data into Students table
 
-INSERT INTO Students (Name, PantherID, Degree, Major, Email, Phone)
-VALUES
-    ('John Doe', 123456789, 'Bachelor of Science', 'Computer Science', 'john.doe@example.com', 1234567890),
-    ('Alice Smith', 987654321, 'Bachelor of Arts', 'English Literature', 'alice.smith@example.com', 9876543210);
-
-
--- Insert sample data into Professors table
+use DBSProj;
+-- Insert into Professors
 INSERT INTO Professors (Name, PantherID, Department, Email, Phone)
-VALUES
-    ('Professor Johnson', 10001, 'Computer Science', 'prof.johnson@example.com', 1112223333),
-    ('Professor Thompson', 10002, 'English Literature', 'prof.thompson@example.com', 4445556666);
+VALUES ('John Doe', 1, 'Computer Science', 'johndoe@example.com', 1234567890);
 
--- Insert sample data into Classes table
-INSERT INTO Classes (Department, Number, Name, Credit, Description, Prerequisites)
-VALUES
-    ('Computer Science', 101, 'Introduction to Computer Science', 3, 'An introduction to computer science concepts', '2 CSCS Courses'),
-    ('English Literature', 201, 'Shakespearean Literature', 3, 'Study of Shakespearean plays and sonnets', '4 CSC Courses');
+-- Insert into Students
+INSERT INTO Students (Name, PantherID, Degree, Major, Email, Phone)
+VALUES ('Jane Smith', 2, 'Bachelor', 'Computer Science', 'janesmith@example.com', 2345678901);
+
+-- Insert into Classes
+INSERT INTO Classes (Department, Number, Name, Credits, Description, Prerequisites)
+VALUES ('Computer Science', 101, 'Intro to Computer Science', 3, 'Introduction to the fundamental concepts of computer science.', 'None');
+
+-- Insert into Spring2024
+INSERT INTO Spring2024 (Department, ProfessorID, Number, Name, Credits, Professor, Time, Days, Location, CRN)
+VALUES ('Computer Science', 1, 101, 'Intro to Computer Science', 3, 'John Doe', '10:00:00', 'MWF', 'Room 101', 12345);
+
