@@ -1,0 +1,83 @@
+--When you make the SQL database, make sure its called 'DBSProj' so you can copy paste this code.
+--Its better if you execute each query in its own script.
+
+
+--To create Professors table:
+use DBSProj;
+CREATE TABLE Professors (
+    Name VARCHAR(100) NOT NULL,
+    PantherID INT PRIMARY KEY,
+    Department VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) NOT NULL,
+    Phone BIGINT NOT NULL
+);
+
+
+--To create Students table:
+use DBSProj;
+CREATE TABLE Students (
+    Name VARCHAR(100) NOT NULL,
+    PantherID INT PRIMARY KEY,
+    Degree VARCHAR(100) NOT NULL,
+    Major VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) NOT NULL,
+    Phone BIGINT NOT NULL
+);
+
+
+--To create Classes table
+use DBSProj;
+CREATE TABLE Classes (
+    Department VARCHAR(100) NOT NULL,
+    Number INT NOT NULL,
+    Name VARCHAR(100) NOT NULL,
+    Credits INT NOT NULL,
+    Description TEXT,
+    Prerequisites TEXT,
+    PRIMARY KEY (Department, Number)
+);
+ALTER TABLE Classes
+ADD INDEX idx_department_number_name_credits (Department, Number, Name, Credits);
+
+
+--To create Spring2024 Table:
+USE DBSProj;
+CREATE TABLE Spring2024 (
+    Department VARCHAR(100),
+    ProfessorID INT,
+    Number INT,
+    Name VARCHAR(100),
+    Credits INT,
+    Professor VARCHAR(100),
+    Time TIME,
+    Days VARCHAR(10),
+    Location VARCHAR(100),
+    CRN INT PRIMARY KEY,
+    FOREIGN KEY (Department, Number, Name, Credits) REFERENCES Classes(Department, Number, Name, Credits),
+    FOREIGN KEY (ProfessorID) REFERENCES Professors(PantherID)
+);
+
+
+
+use DBSProj;
+--This is for sample data:
+-- Insert sample data into Students table
+-- Insert sample data into Students table
+
+INSERT INTO Students (Name, PantherID, Degree, Major, Email, Phone)
+VALUES
+    ('John Doe', 123456789, 'Bachelor of Science', 'Computer Science', 'john.doe@example.com', 1234567890),
+    ('Alice Smith', 987654321, 'Bachelor of Arts', 'English Literature', 'alice.smith@example.com', 9876543210);
+
+
+-- Insert sample data into Professors table
+INSERT INTO Professors (Name, PantherID, Department, Email, Phone)
+VALUES
+    ('Professor Johnson', 10001, 'Computer Science', 'prof.johnson@example.com', 1112223333),
+    ('Professor Thompson', 10002, 'English Literature', 'prof.thompson@example.com', 4445556666);
+
+-- Insert sample data into Classes table
+INSERT INTO Classes (Department, Number, Name, Credit, Description, Prerequisites)
+VALUES
+    ('Computer Science', 101, 'Introduction to Computer Science', 3, 'An introduction to computer science concepts', '2 CSCS Courses'),
+    ('English Literature', 201, 'Shakespearean Literature', 3, 'Study of Shakespearean plays and sonnets', '4 CSC Courses');
