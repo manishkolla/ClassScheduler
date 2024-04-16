@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog View</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        #class-selection {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px; /* Adjust the indentation of bullet points */
+        }
+        #back-button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        #back-button:hover {
+            background-color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+<section id="class-selection">
+    <h2>Class Scheduler</h2>
+    <p>Here are the list of classes in Catalog</p>
+    <ul id="class-list">
+        {% for classData in classes %}
+            <li>{{ classData.name }} ({{ classData.number }})</li>
+        {% endfor %}
+    </ul>
+    <form id="class-form" style="display: none;">
+        <!-- Hidden input field will be added dynamically -->
+    </form>
+    <button id="back-button" onclick="goBack()">Go Back</button>
+</section>
+
+<script>
+    // Accessing the classes variable passed from Flask using Jinja templating
+    const classes = {{ classes | tojson | safe }};
+    // classes variable will now hold the array of class names and numbers retrieved from Flask
+    
+    // Function to dynamically generate checkboxes
+    function generateCheckboxes() {
+        const form = document.getElementById('class-form');
+
+        classes.forEach((classData, index) => {
+            const className = classData.name;
+            const classNumber = classData.number;
+
+            // Create checkbox
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.name = 'classes'; // Fixed the name to match the request.form.getlist('classes') in Flask
+            //checkbox.value = className; // Set the value to the class name
+            checkbox.value = `${className},${ classNumber}`;
+            checkbox.id = 'class' + (index + 1);
+
+            // Create label with class name and number
+            const label = document.createElement('label');
+            label.htmlFor = 'class' + (index + 1);
+            label.textContent = `${className} (${classNumber})`;
+
+            // Append checkbox and label to form
+            form.appendChild(checkbox); // Append checkbox to form directly
+            form.appendChild(label); // Append label to form directly
+            form.appendChild(document.createElement('br')); // Append line break to form directly
+        });
+    }
+    // Call the function to generate checkboxes when the page loads
+    window.onload = generateCheckboxes;
+
+    // Function to handle form submission
+    function handleSubmit() {
+        const form = document.getElementById('class-form');
+        form.submit(); // Submit the form
+        //window.location.href = '/schedule';
+    }
+
+    // Add event listener to submit button
+    document.getElementById('submit-button').addEventListener('click', handleSubmit);
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+</body>
+</html>

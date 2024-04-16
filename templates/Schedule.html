@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Schedule</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/schedulestyle.css')}}">
+</head>
+<style>
+    .button-container {
+        display: flex;
+        justify-content: space-between; /* Align buttons to the left and right */
+        margin-top: 20px;
+        margin-right: 10px; /* Adjust the margin as needed */
+    }
+    
+    .button-container button {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    
+    .button-container button:hover {
+        background-color: #007bff;
+    }
+    
+</style>
+<body>
+    <button class="logout-button" onclick="logout()">Logout</button>
+    <section id="schedule">
+        <section id="schedule">
+            <h1>Generated Schedule</h1>
+            <p>Here are your selected classes:</p>
+            <div class="card-container">
+                {% for class_info in selected_classes %}
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                {% set info_list = class_info.split(',') %}
+                                {% for item in info_list[:-1] %}
+                                    {{ item }}<br>
+                                {% endfor %}
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="centered">
+                                <a href="{{ info_list[-1] }}" target="_blank">Class URL</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="button-container">
+                <button id="register-button1" onclick="Register()">Save Classes</button>
+                <button id="back-button1" onclick="goBack()">Go Back</button>
+                
+            </div>
+        </section>
+    <script>
+        function Register() {
+            window.location.href = '/Saved';
+        }
+        function goBack() {
+            window.history.back();
+        }
+        function logout() {
+            // Redirect to logout URL
+            window.location.href = "/login";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        #class-selection {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #444;
+        }
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px; /* Add margin to separate the button from the checkboxes */
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<section id="class-selection">
+    <h2>Class Selection</h2>
+    <p>Select the classes you desire to take:</p>
+    <form id="class-form" action="/schedule" method="POST">
+        <!-- Checkboxes will be dynamically generated here -->
+    </form >
+    <button id="submit-button" type="button">Submit</button> <!-- Move the button outside the form -->
+</section>
+
+<script>
+    // Function to fetch classes from the Flask backend
+    function fetchClasses() {
+        fetch('/get_classes')
+            .then(response => response.json())
+            .then(data => {
+                // Once the data is received, generate checkboxes dynamically
+                generateCheckboxes(data);
+            })
+            .catch(error => {
+                console.error('Error fetching classes:', error);
+            });
+    }
+
+    // Function to dynamically generate checkboxes based on fetched classes
+    function generateCheckboxes(classes) {
+        const form = document.getElementById('class-form');
+
+        classes.forEach((className, index) => {
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.name = 'classes';
+            checkbox.value = className;
+            checkbox.id = 'class' + (index + 1);
+
+            const label = document.createElement('label');
+            label.htmlFor = 'class' + (index + 1);
+            label.appendChild(document.createTextNode(className));
+
+            form.appendChild(checkbox);
+            form.appendChild(label);
+            form.appendChild(document.createElement('br'));
+        });
+    }
+
+    // Call the function to fetch classes when the page loads
+    window.onload = fetchClasses;
+
+    // Function to handle form submission
+    function handleSubmit() {
+        const form = document.getElementById('class-form');
+        form.submit(); // Submit the form
+        //window.location.href = '/schedule';
+    }
+
+    // Add event listener to submit button
+    document.getElementById('submit-button').addEventListener('click', handleSubmit);
+</script>
+
+
+</body>
+</html>

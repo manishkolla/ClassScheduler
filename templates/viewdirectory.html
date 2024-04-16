@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Directory</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        #class-selection {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px; /* Adjust the indentation of bullet points */
+        }
+        #back-button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        #back-button:hover {
+            background-color: #007bff;
+        }
+        .professor {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f2f2f2;
+            border-radius: 10px;
+        }
+        .professor h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .professor p {
+            margin: 5px 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<section id="class-selection">
+    <h2>Class Scheduler</h2>
+    <p>Here is the Staff Directory</p>
+    <div id="professors">
+        {% for professor in classes %}
+            <div class="professor">
+                <h3>{{ professor.name }}</h3>
+                <p><strong>Department:</strong> {{ professor.department }}</p>
+                <p><strong>Email:</strong> {{ professor.email }}</p>
+                <p><strong>Phone:</strong> {{ professor.phone }}</p>
+                <p><strong>PantherID:</strong> {{ professor.PantherID }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <button id="back-button" onclick="goBack()">Go Back</button>
+</section>
+
+<script>
+    // Accessing the classes variable passed from Flask using Jinja templating
+    const classes = {{ classes | tojson | safe }};
+    const departments ={{departments | tojson | safe}}
+    // classes variable will now hold the array of class names and numbers retrieved from Flask
+
+
+    // Function to handle form submission
+    function handleSubmit() {
+        const form = document.getElementById('class-form');
+        form.submit(); // Submit the form
+        //window.location.href = '/schedule';
+    }
+
+    // Add event listener to submit button
+    document.getElementById('submit-button').addEventListener('click', handleSubmit);
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+</body>
+</html>

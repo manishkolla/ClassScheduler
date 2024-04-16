@@ -1,0 +1,149 @@
+const classes = [
+"Machine Learning",
+"Database Systems",
+"Programming Language Concepts",
+"Software Engineering CTW",
+"Deep Learning",
+"Digital Image Processing"
+// Add more classes as needed
+];
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        #class-selection {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #444;
+        }
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px; /* Add margin to separate the button from the checkboxes */
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<section id="class-selection">
+    <h2>Class Selection</h2>
+    <p>Select the classes you desire to take:</p>
+    <form id="class-form" action="/schedule" method="POST">
+        <!-- Checkboxes will be dynamically generated here -->
+    </form >
+    <button id="submit-button" type="button">Submit</button> <!-- Move the button outside the form -->
+</section>
+
+<script>
+    // Available classes data
+    const classes = {{ classes | tojson | safe }};
+
+    // Function to dynamically generate checkboxes
+    function generateCheckboxes() {
+        const form = document.getElementById('class-form');
+
+        classes.forEach((className, index) => {
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.name = 'classes'; // Fixed the name to match the request.form.getlist('classes') in Flask
+            checkbox.value = className; // Set the value to the class name
+            checkbox.id = 'class' + (index + 1);
+
+            const label = document.createElement('label');
+            label.htmlFor = 'class' + (index + 1);
+            label.appendChild(document.createTextNode(className));
+
+            form.appendChild(checkbox); // Append checkbox to form directly
+            form.appendChild(label); // Append label to form directly
+            form.appendChild(document.createElement('br')); // Append line break to form directly
+        });
+    }
+    // Call the function to generate checkboxes when the page loads
+    window.onload = generateCheckboxes;
+
+    // Function to handle form submission
+    function handleSubmit() {
+        const form = document.getElementById('class-form');
+        form.submit(); // Submit the form
+        //window.location.href = '/schedule';
+    }
+
+    // Add event listener to submit button
+    document.getElementById('submit-button').addEventListener('click', handleSubmit);
+</script>
+
+</body>
+</html>
+
+
+
+-----------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Schedule</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/schedulestyle.css')}}">
+</head>
+<body>
+
+    <section id="schedule">
+        <section id="schedule">
+            <h1>Generated Schedule</h1>
+            <p>Here are your selected classes:</p>
+            <div class="card-container">
+                {% for class_info in selected_classes %}
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                {% for item in class_info.split(',') %}
+                                    {{ item }}<br>
+                                {% endfor %}
+                            </div>
+                            <div class="flip-card-back">
+                                <a href="https://example.com/class-url">Class URL</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+</body>
+</html>
