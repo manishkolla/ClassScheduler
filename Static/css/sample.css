@@ -1,0 +1,57 @@
+/* Reset default margin and padding */
+body, h1, h2, p, input, select, button {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set up the background */
+body {
+    font-family: 'Roboto', sans-serif; /* Use a modern font */
+    background-color: #f2f2f2;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+section#login {
+    background-color: #fff;
+    padding: 40px; /* Adjust padding as needed */
+    border-radius: 10px; /* Remove border-radius */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 400px; /* Increased width */
+    height: auto; /* Set height to auto to accommodate dynamic content */
+    margin-top: 20px; /* Add margin to the top */
+    text-align: center; /* Center align the content */
+}
+
+.box-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align items within the box container */
+}
+
+button {
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

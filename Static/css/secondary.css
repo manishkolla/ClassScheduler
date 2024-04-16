@@ -1,0 +1,258 @@
+/* Custom CSS for Add New Course Page */
+/* Customize scrollbar */
+::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color of the scrollbar track */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #f8f6f6; /* Color of the scrollbar handle */
+    border-radius: 5px; /* Rounded corners for the scrollbar handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar handle on hover */
+}
+body {
+    font-family: 'Roboto', sans-serif; /* Use a modern font */
+    background-color: #f2f2f2;
+    margin: 0; /* Remove default body margin */
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #f44336;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    display: none; /* Initially hidden */
+    z-index: 999; /* Ensure it's above other elements */
+}
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: #000;
+    cursor: pointer;
+}
+
+
+/* Forgot Password */
+section#forgotpassword {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 350px; /* Increase width for better spacing */
+    margin-top: 40px; /* Add margin to the top */
+}
+
+#forgot-password-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#forgot-password-form input {
+    width: 100%; /* Set input fields to take up full width */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Include padding and border in the width */
+}
+
+#forgot-password-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#forgot-password-form button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    margin-top: 20px;
+    text-align: center;
+}
+
+
+
+
+
+/*SIGNUP*/
+/*SIGNUP*/
+section#signup {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 350px; /* Increase width for better spacing */
+    margin-top: 400px; /* Adjusted margin-top */
+}
+
+
+#signup-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#signup-form input {
+    width: 100%; /* Set input fields to take up full width */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Include padding and border in the width */
+}
+
+#signup-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#signup-form button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    margin-top: 20px;
+    text-align: center;
+}
+
+
+
+
+
+/* Reset default margin and padding */
+body, h1, h2, p, input, select, button {
+    margin: 0;
+    padding: 0;
+}
+.left-align {
+            text-align: left;
+            margin-top: 10px; /* Optional: Add some space between the links and the form */
+        }
+.interactive-link {
+            color: #007bff; /* Blue color for the links */
+            cursor: pointer;
+            text-decoration: underline;
+            transition: color 0.3s ease-in-out;
+        }
+.interactive-link:hover {
+            color: #0056b3; /* Darker blue on hover */
+        }
+/* Set up the background */
+body {
+    font-family: 'Roboto', sans-serif; /* Use a modern font */
+    background-color: #f2f2f2;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+section#login {
+    background-color: #fff;
+    padding: 40px; /* Adjust padding as needed */
+    border-radius: 10px; /* Remove border-radius */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Set width */
+    height: 600px; /* Set height */
+    margin-top: 200px; /* Add margin to the top */
+}
+
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #444;
+}
+
+input[type="text"],
+input[type="password"],
+select {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.class-scheduler-link {
+    color: inherit; /* Inherit the color from its parent */
+    text-decoration: none; /* Remove default underline */
+    color: whitesmoke;
+}
+h1 {
+    color: white; /* Change color of h1 to white */
+}
+
+        /* Styles for logout button */
+.home-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #0056b3;
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+.home-button:hover {
+            background-color: #6aa1db;
+        }
