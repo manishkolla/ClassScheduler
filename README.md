@@ -1,7 +1,7 @@
 # ClassScheduler
-Class Project for CS 4710/ 6710
-Professor: Farhan Tanvir
-Project Members: Manish Kolla, Jainam Shah, Komal Ganta
+## Class Project for CS 4710/ 6710
+## Professor: Farhan Tanvir
+## Project Members: Manish Kolla, Jainam Shah, Komal Ganta
 
 ## Abstract:
 This application simplifies class scheduling for Georgia State University students. It uses a user-friendly interface to create draft schedules based on past coursework, preferences, and course availability. This streamlines registration by eliminating manual scheduling conflicts, saving students valuable time.
