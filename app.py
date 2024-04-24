@@ -170,6 +170,8 @@ def facultylogin():
         global degree
         global department
         department= request.form['department']
+        global d
+        d=department
         degree= request.form['degree']
         print(department,degree)
         if username == 'admin' and password == 'admin':  # Dummy authentication
@@ -181,13 +183,13 @@ def facultylogin():
                 #session['user']=username
                 return redirect(url_for('facultymodify'))
             except:
-                return render_template('index.html', error='Invalid username or password')
+                return render_template('faculty.html', error='Invalid username or password')
                 #return redirect(url_for('signups'))
         else:
-            return render_template('index.html')
+            return render_template('faculty.html')
     else:
             # If login is unsuccessful, redirect back to the login page or show an error message
-        return render_template('index.html')
+        return render_template('faculty.html')
 
 @app.route('/faculty/signups')  
 def faculty_signup():
@@ -195,13 +197,16 @@ def faculty_signup():
 
 @app.route('/faculty/postsignup', methods=['POST', 'GET'])       
 def facultysignup():
+    print("flask")
     if request.method=='POST':
         username = request.form['email']
         username=username.lower()
         password = request.form['password']
         try:
             create_user(username,password)
-            return render_template('faculty.html')
+            print("created")
+            return redirect(url_for('faculty_login'))
+            #return render_template('faculty.html')
         except:
             return render_template('facultysignup.html', error='An error occurred, Please try again')
     return render_template('facultysignup.html')
@@ -248,9 +253,11 @@ def updateprof():
         id=request.form['panther']
     try:
         update_prof((name,int(id),depart,email,int(num)))
+        print((name,int(id),depart,email,int(num)))
         print("Prof Updated")
         return render_template('successprof.html')
     except Exception as e:
+            print(e)
             return render_template('updateprof.html')
     
 @app.route('/faculty/updateprof/success')
@@ -436,7 +443,26 @@ def catalog():
 
 @app.route('/faculty/viewcatalog')
 def viewcatalog():
-    department='CSC'
+    print(d)
+    department=""
+    if d=='Computer Science' or d=='Data Science':
+        print("yes, cs")
+        department='CSC'
+    if d=='Economics':
+        print("yes, econ")
+        department='ECON'
+    if d== 'Criminal Justice':
+        print("yes, cj")
+        department='CRJU'
+    if d== 'Biology':
+        print("yes, bio")
+        department='BIOL'
+    if d=='Chemistry':
+        department= 'CHEM'
+    if d== 'English':
+        department='ENGL'
+    else:
+        pass
     nam=getcourses111(department)[0]
     num=getcourses111(department)[1]
     all_courses=[]
