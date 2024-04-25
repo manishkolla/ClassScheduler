@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Student Management</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 10vh;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .box h2 {
+            text-align: center;
+        }
+        .box p {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .box a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .box a:hover {
+            color: #0056b3;
+        }
+        /* Styles for logout button */
+        .logout-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .logout-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <button class="logout-button" onclick="logout()">Logout</button>
+    <div class="container">
+        <div class="box">
+            <h2>Schedule Classes</h2>
+            <p>Plan your classes hassel free for Spring 2023.</p>
+            <a href="/ClassesSelection">Plan</a>
+        </div>
+        <div class="box">
+            <h2>View Saved Classes</h2>
+            <p>View my Current Classes</p>
+            <a href="/ViewmyClasses">View Schedule</a>
+        </div>
+        <div class="box">
+            <h2>Remove Class</h2>
+            <p>Remove a Class from Saved Classes.</p>
+            <a href="/removesavedclass">Remove Classes</a>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            // Redirect to logout URL
+            window.location.href = "/login";
+        }
+    </script>
+</body>
+</html>
+

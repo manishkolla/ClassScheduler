@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Faculty - Class Scheduler</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/update.css')}}">
+    <link rel="stylesheet" href="modal.css">
+</head>
+<body>
+    <header>
+        <h1 id='pageTitle'>Class Scheduler</h1>      
+    </header>
+    <main>
+        <section id="add-course">
+            <h2>Add New Faculty</h2>
+            <form id="course-form" action="/faculty/addprofessor" method="POST">
+                <label for="department">Department(Computer Science):</label>
+                <input type="text" id="department" name="department" required>
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="number">Phone Number:</label>
+                <input type="text" id="number" name="number" required>
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" required>
+                <label for="panther">PantherID:</label>
+                <input type="text" id="panther" name="panther" required>
+                <br></br>
+                <div class="button-container">
+                    <button type="submit" onclick="confirmAddCourse()">Add Faculty</button>
+                    <button onclick="goBack()">Go Back</button>
+                </div>
+            </form>
+            {% if message  %}
+            <div class="error-message">{{ message }}</div>
+            {% endif %}
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Class Scheduler</p>
+    </footer>
+    <script>
+        // Function to go back to the previous page
+
+        function goBack() {
+            window.history.back();
+        }
+        function confirmAddCourse() {
+            if (window.confirm("Are you sure you want to add this faculty?")) {
+                // If user confirms, redirect to the success page
+                window.location.href = "/faculty/addprof/success";
+                return true; // Allow form submission
+            }
+            // If user cancels, do not submit the form
+            return false;
+        }
+    </script>
+    </script>
+</body>
+</html>

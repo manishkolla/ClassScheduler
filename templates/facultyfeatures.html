@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Class Management</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 10vh;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin: 20px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .box h2 {
+            text-align: center;
+        }
+        .box p {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .box a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .box a:hover {
+            color: #0056b3;
+        }
+        /* Styles for logout button */
+        .logout-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .logout-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <button class="logout-button" onclick="logout()">Logout</button>
+    <div class="container">
+        <div class="box">
+            <h2>Add Classes</h2>
+            <p>Add new classes to the schedule.</p>
+            <a href="/faculty/addclasses">Add Classes</a>
+        </div>
+        <div class="box">
+            <h2>Remove Classes</h2>
+            <p>Remove existing classes from the schedule.</p>
+            <a href="/faculty/removeclasses">Remove Classes</a>
+        </div>
+        <div class="box">
+            <h2>Update Classes</h2>
+            <p>Update a class to the schedule.</p>
+            <a href="/faculty/updateclasses">Update Classes</a>
+        </div>
+        <div class="box">
+            <h2>Spring 2023 Classes</h2>
+            <p>View the current list of classes.</p>
+            <a href="/faculty/viewclasses">View Schedule</a>
+        </div> 
+
+
+        <div class="box">
+            <h2>View Staff Directory</h2>
+            <p>View the current list of faculty.</p>
+            <a href="/faculty/viewprofessor">View Directory</a>
+        </div>
+    </div>
+    <div class="container2">
+        <div class="box">
+            <h2>Catalog View</h2>
+            <p>View Courses Catalog</p>
+            <a href="/faculty/catalog">Open Catalog</a>
+        </div>
+        <div class="box">
+            <h2>Add Faculty</h2>
+            <p>Add New Faculty to directory</p>
+            <a href="/faculty/addprofessor">Add Faculty</a>
+        </div>
+        <div class="box">
+            <h2>Update Faculty</h2>
+            <p>Update Faculty Details</p>
+            <a href="/faculty/updateprofessor">Update Faculty</a>
+        </div>
+        <div class="box">
+            <h2>Remove Faculty</h2>
+            <p>Remove Faculty Details</p>
+            <a href="/faculty/removeprof">Remove Faculty</a>
+        </div>
+    </div>
+
+    <script>
+        function logout() {
+            // Redirect to logout URL
+            window.location.href = "/faculty/login";
+        }
+    </script>
+</body>
+</html>
+

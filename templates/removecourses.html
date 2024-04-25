@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Course - Class Scheduler</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/remove.css')}}">
+    <link rel="stylesheet" href="modal.css">
+    <style>
+        /* CSS to change color of Class Scheduler to white */
+        .pageTitle {
+            text-color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id='pageTitle'>Class Scheduler</h1>      
+    </header>
+    <main>
+        <section id="add-course">
+            <h2>Remove Course</h2>
+            <form id="course-form" action="/faculty/remove" method="POST" onsubmit="return validateForm()">
+                <label for="department">Department:</label>
+                <input type="text" id="department" name="department" required>
+                <label for="number">Number:</label>
+                <input type="text" id="number" name="number" required>
+                <label for="courseName">Course Name:</label>
+                <input type="text" id="courseName" name="courseName" required>
+                <label for="crn">CRN:</label>
+                <input type="text" id="crn" name="crn" required>
+                <br></br>
+                <div class="button-container">
+                    <button type="submit" onclick="confirmAddCourse()">Remove Course</button>
+                    <button onclick="goBack()">Go Back</button>
+                </div>
+            </form>
+            {% if message %}
+            <div class="error-message">{{ message }}</div>
+            {% endif %}
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Class Scheduler</p>
+    </footer>
+    <script>
+        // Function to go back to the previous page
+
+        function goBack() {
+            window.history.back();
+        }
+        function confirmAddCourse() {
+            if (window.confirm("Are you sure you want to remove this course?")) {
+                // If user confirms, redirect to the success page
+                window.location.href = "/faculty/removeclasses/success";
+                return true; // Allow form submission
+            }
+            // If user cancels, do not submit the form
+            return false;
+        }
+
+        // Function to validate the form before submission
+        function validateForm() {
+            var department = document.getElementById("department").value;
+            var number = document.getElementById("number").value;
+            var courseName = document.getElementById("courseName").value;
+            var crn = document.getElementById("crn").value;
+
+            if (department === "" || number === "" || courseName === "" || crn === "") {
+                console.error("All fields are required!");
+                alert("All fields are required!");
+                return false; // Prevent form submission
+            }
+            return true; // Allow form submission
+        }
+    </script>
+</body>
+</html>

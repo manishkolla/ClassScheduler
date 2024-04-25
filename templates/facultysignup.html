@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %}{% endblock %}
+    <title>Sign Up - Class Scheduler</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/secondary.css')}}">
+</head>
+<body>
+    {% block body %}{% endblock %}
+    <header>
+        <h1>Class Scheduler</h1>      
+    </header>
+    <main>
+        <section id="signup">
+            <h2>Faculty Sign Up</h2>
+            <form id="signup-form" action="{{ url_for('facultysignup') }}" method="POST">
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <!-- Add more fields as needed -->
+
+                <button type="submit">Sign Up</button>
+            </form>
+            <br></br>
+            <p>Already have an account? <a href="faculty/login">Faculty Login</a></p>
+        </section>
+    </main>
+</body>
+</html>

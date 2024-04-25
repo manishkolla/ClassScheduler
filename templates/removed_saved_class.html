@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Course - Class Scheduler</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/update.css')}}">
+    <link rel="stylesheet" href="modal.css">
+</head>
+<body>
+    <header>
+        <h1 id='pageTitle'>Class Scheduler</h1>      
+    </header>
+    <main>
+        <section id="add-course">
+            <h2>Remove Class</h2>
+            <form id="course-form" action="/removesavedclass" method="POST">
+                <label for="crn">CRN:</label>
+                <input type="text" id="crn" name="crn" required>
+                <br></br>
+                <div class="button-container">
+                    <button type="submit" onclick="confirmAddCourse()">Remove Course</button>
+                    <button onclick="goBack()">Go Back</button>
+                </div>
+            </form>
+            {% if message  %}
+            <div class="error-message">{{ message }}</div>
+            {% endif %}
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Class Scheduler</p>
+    </footer>
+    <script>
+        // Function to go back to the previous page
+
+        function goBack() {
+            window.history.back();
+        }
+        function confirmAddCourse() {
+            if (window.confirm("Are you sure you want to remove this course?")) {
+                // If user confirms, redirect to the success page
+                window.location.href = "/removesavedclass/success";
+                return true; // Allow form submission
+            }
+            // If user cancels, do not submit the form
+            return false;
+        }
+    </script>
+    </script>
+</body>
+</html>

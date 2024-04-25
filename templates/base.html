@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %}{% endblock %}
+    <title>Class Scheduler</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/secondary.css')}}">
+</head>
+
+<body>
+    {% block body %}{% endblock %}
+    <button class="home-button" onclick="home()">Home</button>
+    <header>
+        <h1>Class Scheduler</h1>      
+    </header>
+    <div class="notification" id="errorNotification">
+        <span class="close-btn" onclick="closeErrorNotification()">×</span>
+        <span id="errorMessage"></span>
+    </div>
+    
+    <main>
+        <section id="login">
+            <h2>Student Login</h2>
+            <form action="/login" method="POST">
+                <label for="username">Email:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <label for="pantherid">PantherID:</label>
+                <input type="text" id="pantherid" name="pantherid" required>
+                <!-- Add dropdown box for selecting major -->
+
+                <label for="degree">Select Degree Program:</label>
+                <select id="degree" name="degree">
+                    <option value="Bachelors">Bachelors</option>
+                    <option value="Masters">Masters</option>
+                    <!-- Add more options as needed -->
+                </select>
+
+                <label for="major">Select Major:</label>
+                <select id="major" name="major">
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Data Science">Data Science</option>
+                    <option value="Criminal Justice">Criminal Justice</option>
+                    <option value="Biology">Biology</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="Economics">Economics</option>
+                    <option value="English">English</option>
+                    <option value="CIS">Computer Information Sciences</option>
+
+                    <!-- Add more options as needed -->
+                </select>
+                <button type="submit">Login</button>
+            </form>
+            <br></br>
+            <div class="left-align">
+                <p><a href="/signup" class="interactive-link">Sign Up</a></p>
+                <p><span class="interactive-link" onclick="window.location.href='/forgotpassword'">Forgot your password?</span></p>
+            </div>
+        </section>
+    </main>
+    <script>
+        // JavaScript to show error notification
+        window.onload = function() {
+            // Check if error message exists
+            var errorMessage = "{{ error }}";
+            if (errorMessage.trim() !== "") {
+                // Display error notification
+                var errorNotification = document.getElementById("errorNotification");
+                errorNotification.textContent = errorMessage;
+                errorNotification.style.display = "block";
+            }
+        };
+
+        // Function to close error notification
+        function closeErrorNotification() {
+            var errorNotification = document.getElementById("errorNotification");
+            errorNotification.style.display = "none";
+        }
+        function home() {
+            // Redirect to logout URL
+            window.location.href = "/";
+        }
+    </script>
+</body>
+</html>
