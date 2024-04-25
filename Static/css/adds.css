@@ -1,0 +1,86 @@
+/* Custom CSS for Update Course Page */
+
+body {
+    font-family: 'Roboto', sans-serif; /* Use a modern font */
+    background-color: #f2f2f2;
+    margin: 0; /* Remove default body margin */
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px 0; /* Decrease top and bottom padding */
+    margin: 0; /* Remove default margin */
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+section#add-course {
+    background-color: #fff;
+    padding: 40px; /* Adjust padding as needed */
+    border-radius: 10px; /* Remove border-radius */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 340px; /* Set width */
+    margin-top: 80px; /* Adjust margin */
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #444;
+}
+
+input[type="text"],
+input[type="url"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-evenly; /* Use space-evenly to evenly distribute buttons */
+    margin-top: 20px; /* Adjust margin */
+}
+
+button {
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f2f2f2; /* Remove background color */
+    color: #555; /* Set text color */
+    text-align: center;
+    padding: 200px 0;
+}

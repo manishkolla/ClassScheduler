@@ -1,0 +1,76 @@
+/* Reset default margin and padding */
+body, h1, p, input, button {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set up the background and font */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+/* Center the content vertically and horizontally */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for the forgot password form */
+form {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 350px; /* Adjust width as needed */
+}
+
+/* Header style */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Error message style */
+p.error {
+    color: red;
+    margin-bottom: 10px;
+}
+
+/* Label style */
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #444;
+}
+
+/* Input field style */
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Submit button style */
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Submit button hover effect */
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
