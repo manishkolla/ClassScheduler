@@ -167,9 +167,9 @@ def add_prof(data):
     connection.commit()
 
 def update_prof(data):
-    cursor9=connection.cursor()
-    sql=f"UPDATE scheduler.professors SET Name= %s, PantherID= %s, Department= %s, Email= %s, Phone= %s WHERE PantherID={data[0]}"
-    cursor9.execute(sql)
+    cursor8 = connection.cursor()
+    sql = "UPDATE scheduler.professors SET Name=%s, Department=%s, Email=%s, Phone=%s WHERE PantherID=%s"
+    cursor8.execute(sql, (data[0], data[2], data[-2], data[-1], data[1]))
     connection.commit()
 
 def remove_prof(data):
